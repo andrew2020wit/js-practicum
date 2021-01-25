@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Test</h1>
+    <script>
+      // fetch, async, await, promise
+      const mainFunction = async () => {
+        const url =
+          "https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits";
+
+        const response = await fetch(url);
+
+        console.log("response.ok", response.ok);
+        console.log("response.status", response.status);
+        console.log("response.statusText", response.statusText);
+
+        const commits = await response.json(); // читаем ответ в формате JSON
+
+        console.log("author.login", commits);
+        console.log("author.login", commits[0].author.login);
+      };
+
+      const promiseFunction = () => {
+        const url =
+          "https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits";
+
+        fetch(url)
+          .then((response) => response.json())
+          .then((commits) =>
+            console.log("promiseFunction, login: ", commits[0].author.login)
+          );
+      };
+      mainFunction();
+      promiseFunction();
+    </script>
+  </body>
+</html>
