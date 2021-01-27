@@ -1,6 +1,15 @@
 # JavaScript practicum
 
-it's based on:
+## Vanila JavaScript
 
-1. https://learn.javascript.ru/
-2. https://nodejs.dev/learn/
+js-vanila/, html/
+
+https://learn.javascript.ru/
+
+## Node-practicum
+
+https://nodejs.dev/learn/
+
+## express-locallibrary-tutorial
+
+https://developer.mozilla.org/ru/docs/Learn/Server-side/Express_Nodejs
