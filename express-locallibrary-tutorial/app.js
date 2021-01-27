@@ -13,7 +13,7 @@ var app = express();
 //Устанавливаем соединение с mongoose
 var mongoose = require("mongoose");
 var mongoDB = "mongodb://root:rootpassword@127.0.0.1:27017/";
-mongoose.connect(mongoDB);
+mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
