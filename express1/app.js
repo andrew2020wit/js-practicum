@@ -4,8 +4,24 @@ const port = 3000;
 
 const routingExemple = require("./routing-example");
 
-app.get("/", (req, res) => {
-  res.send("This is Home Page.");
+var myLogger = function (req, res, next) {
+  console.log("LOGGED");
+  next();
+};
+
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+
+app.use(myLogger);
+
+app.use(requestTime);
+
+app.get("/", function (req, res) {
+  var responseText = "Hello World!<br>";
+  responseText += "<small>Requested at: " + req.requestTime + "</small>";
+  res.send(responseText);
 });
 
 app.use("/routing-example", routingExemple);
