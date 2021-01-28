@@ -4,7 +4,9 @@ var router = express.Router();
 const birds = require("./birds");
 
 router.get("/", function (req, res) {
-  res.send("This is routing-example");
+  res.render("routing-example", {
+    title: "routing-example",
+  });
 });
 
 router.get("/users/:userId/books/:bookId", function (req, res) {
