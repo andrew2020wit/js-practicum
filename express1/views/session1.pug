@@ -1,0 +1,9 @@
+extends layout
+
+block content    
+    p sessionValue: !{sessionValue}
+    ul
+        li
+            a(href='/session1/set-on/') sessionValue: set On
+        li
+            a(href='/session1/set-of/') sessionValue: set Of
