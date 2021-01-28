@@ -3,28 +3,17 @@ const app = express();
 const port = 3000;
 
 const routingExemple = require("./routing-example");
+const middlewareExample = require("./middleware-example");
 
-var myLogger = function (req, res, next) {
-  console.log("LOGGED");
-  next();
-};
-
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
-  next();
-};
-
-app.use(myLogger);
-
-app.use(requestTime);
+app.set("view engine", "pug");
+app.set("views", "./views");
 
 app.get("/", function (req, res) {
-  var responseText = "Hello World!<br>";
-  responseText += "<small>Requested at: " + req.requestTime + "</small>";
-  res.send(responseText);
+  res.render('index', { title: 'HomePageTitle', message: 'Hello there!' })
 });
 
 app.use("/routing-example", routingExemple);
+app.use("/middleware-example", middlewareExample);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
