@@ -2,12 +2,12 @@ var express = require("express");
 var router = express.Router();
 
 var myLogger = function (req, res, next) {
-  console.log("LOGGED");
+  console.log("myLogger: LOGGED");
   next();
 };
 
 var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
+  req.requestTime = new Date().toLocaleString();
   next();
 };
 
@@ -16,9 +16,10 @@ router.use(myLogger);
 router.use(requestTime);
 
 router.get("/", function (req, res) {
-  var responseText = "This is middleware-example<br>";
-  responseText += "<small>Requested at: " + req.requestTime + "</small>";
-  res.send(responseText);
+  res.render("middleware-example", {
+    title: "middleware-example",
+    requestTime: req.requestTime,
+  });
 });
 
 module.exports = router;
