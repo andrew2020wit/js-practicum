@@ -5,6 +5,7 @@ const port = 3000;
 const routingExemple = require("./routing-example");
 const middlewareExample = require("./middleware-example");
 const errorHandling = require("./error-handling");
+const cookieModule = require("./cookie");
 
 app.set("view engine", "pug");
 app.set("views", "./views");
@@ -18,6 +19,7 @@ app.get("/", function (req, res) {
 app.use("/routing-example", routingExemple);
 app.use("/middleware-example", middlewareExample);
 app.use("/error-handling", errorHandling);
+app.use("/cookie", cookieModule);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
