@@ -6,8 +6,11 @@ const port = 3000;
 
 app.use("", express.static(`${__dirname}/public`));
 
-app.get("/", (req, res) => {
-  res.redirect("/index.html");
+app.set("views", "./views");
+app.set("view engine", "pug");
+
+app.get("/", function (req, res) {
+  res.render("index");
 });
 
 app.listen(port, host, function () {
