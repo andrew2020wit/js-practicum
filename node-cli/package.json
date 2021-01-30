@@ -1,0 +1,16 @@
+{
+  "name": "express-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js --help"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^7.0.0",
+    "inquirer": "^7.3.3"
+  },
+  "author": "",
+  "license": "ISC"
+}
