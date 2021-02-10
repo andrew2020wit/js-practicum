@@ -7,7 +7,7 @@ const port = 3000;
 const MongoClient = require("mongodb").MongoClient;
 
 const mongoClient = new MongoClient(
-  "mongodb://root:rootpassword@127.0.0.1:27017/",
+  "mongodb://mongoadmin:secret@127.0.0.1:27017/",
   { useUnifiedTopology: true }
 );
 mongoClient.connect(function (err, client) {
@@ -15,7 +15,7 @@ mongoClient.connect(function (err, client) {
     return console.log(err);
   }
 
-  const db = client.db("usersdb2");
+  const db = client.db("usersdb22");
   const collection = db.collection("users");
 
   let user = { name: "Tom", age: 23 };
@@ -29,13 +29,8 @@ mongoClient.connect(function (err, client) {
   });
 });
 
-app.use("", express.static(`${__dirname}/public`));
-
-app.set("views", "./views");
-app.set("view engine", "pug");
-
 app.get("/", function (req, res) {
-  res.render("index");
+  res.end("ok");
 });
 
 app.listen(port, host, function () {
