@@ -2,6 +2,7 @@
 
 const commander = require("commander");
 const { prompt } = require("inquirer");
+const { defaultCommand } = require("./modules/default-command");
 const chalk = require("chalk");
 const fs = require("fs");
 
@@ -32,6 +33,14 @@ commander
   .description("Some command2 (description)")
   .action(() => {
     console.log("command2 executed");
+  });
+
+commander
+  .command("default", { isDefault: true })
+  .alias("d")
+  .description("(default command)")
+  .action(() => {
+    defaultCommand();
   });
 
 commander.parse(process.argv);
